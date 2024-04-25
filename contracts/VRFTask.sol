@@ -18,6 +18,12 @@ import "hardhat/console.sol";
 */
 
 
+// contract deployed on testnet
+// the address is: 0x6e3430ba798eC9d3eCc6465afb70cc4265d09e28
+// tx hash: 0x625e6c011ee352ad456234e67b36827d18f7a065a518fa41b5c567bbe104fc79
+// web etherscan: https://sepolia.etherscan.io/tx/0x625e6c011ee352ad456234e67b36827d18f7a065a518fa41b5c567bbe104fc79
+
+
 contract VRFTask is VRFConsumerBaseV2 {
     VRFCoordinatorV2Interface immutable COORDINATOR;
     
@@ -38,7 +44,7 @@ contract VRFTask is VRFConsumerBaseV2 {
     // Chainlink VRF 在接收到请求后，会通过 fulfillRandomWords 将数据写回到用户合约，此过程需要消耗 gas
     // CALL_BACK_LIMIT 是回调函数可以消耗的最大 gas，根据回调函数的逻辑适当调整 CALL_BACK_LIMIT
     // 详情请查看：https://docs.chain.link/vrf/v2/subscription/examples/get-a-random-number#analyzing-the-contract
-    uint32 constant CALL_BACK_LIMIT = 500000; 
+    uint32 constant CALL_BACK_LIMIT = 100000; 
     // if the gas limit is small than a threshold, the tx would not be accepted.
     // Error: Transaction reverted without a reason string.
     // Therefore, setting a reasonable gas limit is necessary
@@ -56,6 +62,7 @@ contract VRFTask is VRFConsumerBaseV2 {
 
     // s_keyHash 是 VRF 的 gas Lane，决定回调时所使用的 gas price
     // 在这里查看  https://docs.chain.link/vrf/v2/subscription/supported-networks
+
     bytes32 immutable s_keyHash;
 
     uint256[] public s_randomWords;
@@ -95,6 +102,8 @@ contract VRFTask is VRFConsumerBaseV2 {
         // from chainlink web
         // VRFCoordinator address: 0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625
         // VRFCoordinator 150 gwei key hash: 0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c
+        
+        // subscriptionId from chainlink service
         COORDINATOR = VRFCoordinatorV2Interface(address(vrfCoordinator));
         s_subscriptionId = _subscriptionId;
         s_keyHash = _keyHash;

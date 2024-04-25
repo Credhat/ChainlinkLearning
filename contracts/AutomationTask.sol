@@ -19,6 +19,14 @@ import "@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol";
  * 2. 通过 Remix 在 Ethereum Sepolia 测试网部署，并且测试执行是否如预期
  */
 
+// contract deployed on testnet
+// the address is: 0x708FF6142114D3e7fe3e193979250A03ba157999
+// tx hash: 0x677b2ed1a8d6649308c34b24a389be0f8a72d1f34e71eeade7f51850e4d85069
+// web etherscan: https://sepolia.etherscan.io/tx/0x677b2ed1a8d6649308c34b24a389be0f8a72d1f34e71eeade7f51850e4d85069
+
+
+
+
 contract AutomationTask is AutomationCompatible {
     uint256 public constant SIZE = 10;
     uint256 public constant MAXIMUM_HEALTH = 1000;

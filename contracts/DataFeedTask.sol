@@ -13,6 +13,12 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
  * 2. 通过 Remix 在 Ethereum Sepolia 测试网部署，并且测试执行是否如预期
 */
 
+
+// contract deployed on testnet
+// the address is: 0xC34A871Fb0d51956c5c9Fc2E0afCb89A2B723543
+// tx hash: 0xdbe28f0afda2b0b3d6ffbba67ef00a065beb4eac8d2442639bc8cb73ab7ad62c
+// web etherscan: https://sepolia.etherscan.io/tx/0xdbe28f0afda2b0b3d6ffbba67ef00a065beb4eac8d2442639bc8cb73ab7ad62c
+
 contract DataFeedTask {
     AggregatorV3Interface internal linkPriceFeed;
     AggregatorV3Interface internal btcPriceFeed;
