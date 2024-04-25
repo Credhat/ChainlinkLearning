@@ -1,15 +1,15 @@
 const { loadFixture } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
 const { expect } = require("chai");
 
-describe("单元测试：Chainlink VRF", async ()=> {
+describe("单元测试：Chainlink VRF", async () => {
 
     async function deployVRFConsumerFixture() {
         const [deployer] = await ethers.getSigners();
 
         const BASE_FEE = "100000000000000000";
         const GAS_PRICE_LINK = "1000000000";
-        
-        
+
+
         const VRFCoordinatorContract = await ethers.getContractFactory("VRFCoordinatorV2Mock");
         const VRFCoordinator = await VRFCoordinatorContract
             .deploy(
@@ -43,14 +43,14 @@ describe("单元测试：Chainlink VRF", async ()=> {
                 vrfCoordinatorAddr,
                 keyHash
             );
-        
+
         const VRFConsumerAddr = VRFConsumer.target;
         await VRFCoordinator.addConsumer(subscriptionId, VRFConsumerAddr);
 
         return { VRFConsumer, VRFCoordinator };
     }
 
-    it("单元测试 1-0: VRF 请求成功发送", async function() {
+    it("单元测试 1-0: VRF 请求成功发送", async function () {
         const { VRFConsumer, VRFCoordinator } = await loadFixture(deployVRFConsumerFixture);
         await expect(VRFConsumer.requestRandomWords()).to.emit(
             VRFCoordinator,
@@ -59,12 +59,12 @@ describe("单元测试：Chainlink VRF", async ()=> {
     });
 
 
-    it("单元测试 1-1: 成功接受到随机数", async function() {
+    it("单元测试 1-1: 成功接受到随机数", async function () {
         const { VRFConsumer, VRFCoordinator } = await loadFixture(deployVRFConsumerFixture);
         await VRFConsumer.requestRandomWords();
         const requestId = await VRFConsumer.s_requestId();
 
-        
+
         await expect(
             VRFCoordinator.fulfillRandomWords(
                 requestId,
@@ -85,13 +85,13 @@ describe("单元测试：Chainlink VRF", async ()=> {
         expect(rand4).to.be.above(0, "1st random number is not greater than 0");
     });
 
-    it("单元测试 1-2: 成功得到 5 个不重复的随机数", async function() {
+    it("单元测试 1-2: 成功得到 5 个不重复的随机数", async function () {
         const { VRFConsumer, VRFCoordinator } = await loadFixture(deployVRFConsumerFixture);
         await VRFConsumer.requestRandomWords();
         const requestId = await VRFConsumer.s_requestId();
 
         await VRFCoordinator.fulfillRandomWords(requestId, VRFConsumer.target);
-        
+
         const rand0 = await VRFConsumer.s_randomWords(0);
         const rand1 = await VRFConsumer.s_randomWords(1);
         const rand2 = await VRFConsumer.s_randomWords(2);
@@ -99,10 +99,10 @@ describe("单元测试：Chainlink VRF", async ()=> {
         const rand4 = await VRFConsumer.s_randomWords(4);
 
         const arr = [
-            parseInt(rand0), 
-            parseInt(rand1), 
-            parseInt(rand2), 
-            parseInt(rand3), 
+            parseInt(rand0),
+            parseInt(rand1),
+            parseInt(rand2),
+            parseInt(rand3),
             parseInt(rand4)
         ]
 

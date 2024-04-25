@@ -5,7 +5,6 @@
 
 本项目的目的是通过 [几个简单的任务](#练习任务) 和 [配套的教程](#学习资料) 来帮助开发者了解 Chainlink 预言机，**目标人群**为想要了解预言机的智能合约开发者。
 
-<b>完成这前 3 个任务以后，将地址提交给 Frank 以获得 SBT 学历证明以及 Chainlink Swag！</b>
 
 :heart: Chainlink degree SBT :heart:
 https://polygonscan.com/address/0x5a1805ffd9cfa1f79fb3cfced12e02e342672e2e
