@@ -19,9 +19,9 @@ import "hardhat/console.sol";
 
 
 // contract deployed on testnet
-// the address is: 0x6e3430ba798eC9d3eCc6465afb70cc4265d09e28
-// tx hash: 0x625e6c011ee352ad456234e67b36827d18f7a065a518fa41b5c567bbe104fc79
-// web etherscan: https://sepolia.etherscan.io/tx/0x625e6c011ee352ad456234e67b36827d18f7a065a518fa41b5c567bbe104fc79
+// the address is: 0x74fdAdE1D87abe92c905FDBaf7dFFc7B77a357dD
+// tx hash: 0xde446dad97ce793bdd9a5c3cb306d2340b9c0b564a385e208f39d5253dbab3ad
+// web etherscan: https://sepolia.etherscan.io/tx/0xde446dad97ce793bdd9a5c3cb306d2340b9c0b564a385e208f39d5253dbab3ad
 
 
 contract VRFTask is VRFConsumerBaseV2 {
