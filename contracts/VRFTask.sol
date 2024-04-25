@@ -44,7 +44,7 @@ contract VRFTask is VRFConsumerBaseV2 {
     // Chainlink VRF 在接收到请求后，会通过 fulfillRandomWords 将数据写回到用户合约，此过程需要消耗 gas
     // CALL_BACK_LIMIT 是回调函数可以消耗的最大 gas，根据回调函数的逻辑适当调整 CALL_BACK_LIMIT
     // 详情请查看：https://docs.chain.link/vrf/v2/subscription/examples/get-a-random-number#analyzing-the-contract
-    uint32 constant CALL_BACK_LIMIT = 100000; 
+    uint32 constant CALL_BACK_LIMIT = 2500000; 
     // if the gas limit is small than a threshold, the tx would not be accepted.
     // Error: Transaction reverted without a reason string.
     // Therefore, setting a reasonable gas limit is necessary
